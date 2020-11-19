@@ -1,0 +1,36 @@
+<!-- <mat-dialog-actions> <button   aria-label="Close"  mat-button mat-dialog-close>
+    <span aria-hidden="false">×</span>
+</button> </mat-dialog-actions> -->
+<mat-toolbar style="padding: 12px;  height: 30px;" fxLayout="row">
+    <p>Segment Wise Speed Stats</p>
+</mat-toolbar>
+
+<div style="padding: 5px;" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.1%" fxLayoutAlign="center">
+
+
+    <div fxFlex="40%" style=" padding: 5px;" fxLayout="column" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
+
+
+        <mat-card fxFlex="33%" style=" background-color:#1e88e5; padding: 5px;">
+            <div class="avgtraveltime" style="color: white; ">
+                <p id='meanspeed'>Avg Speed: {{meanspeed}} </p>
+            </div>
+        </mat-card>
+        <mat-card fxFlex="33%" style=" background-color:#6771ff; padding: 5px;">
+            <div class="avgtraveltime" style="color: white; ">
+                <p id='minspeed'>Min Speed: {{min}} </p>
+            </div>
+        </mat-card>
+        <mat-card fxFlex="33%" style="background-color:#ff1744; padding: 5px;">
+            <div class="avgtraveltime" style="color: white;  ">
+                <p id='maxspeed'>Max Speed: {{max}} </p>
+            </div>
+        </mat-card>
+    </div>
+
+    <mat-divider></mat-divider>
+    <div fxFlex="60%" class="chart-wrapper" style="position: relative; align-content:  center; margin: auto; background-color: rgb(255, 255, 255);">
+        <canvas id="segchart"></canvas>
+    </div>
+
+</div>

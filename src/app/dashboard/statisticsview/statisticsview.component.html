@@ -1,0 +1,158 @@
+<div class="container" style="background-color: rgb(255, 238, 238);">
+   
+        <!-- <div fxLayout="row" style="height:20px;margin-bottom: 4px;">
+            <h5>Historical Trend of Traffic ({{fddate}} / {{tddate}})</h5>
+            
+        </div> -->
+        <div fxLayout="column" style="padding-left: 12px; font-size: small;">
+           <p>Historical Trend of Traffic ({{fddate}} / {{tddate}})</p> 
+          <div><button mat-raised-button color="primary" (click)="report()" *ngIf='!show'>Gen-Report</button></div>  
+        </div>
+
+   
+    <div style=" margin: 10px; background-color: rgb(255, 254, 254);" class="container " fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.1%" fxLayoutAlign="center">
+
+        <div fxFlex="25%">
+            <mat-card style="background-color: #0090eab4 ;color: whitesmoke;">
+
+                <p>Total Roads</p>
+                <h1 style="font-size: medium; color: honeydew;">{{totalroad}}</h1>
+
+            </mat-card>
+
+        </div>
+
+        <div fxFlex="25%">
+            <mat-card style="background-color: #d32f2fc4 ;color: whitesmoke; ">
+
+                <p>Congested</p>
+                <h1 style="font-size: medium; color: honeydew;">{{congestedroad}}</h1>
+
+            </mat-card>
+        </div>
+
+
+        <div fxFlex="25%">
+            <mat-card style="background-color: #ff6d41bb;color: whitesmoke;">
+
+                <p>Mild</p>
+                <h1 style="font-size: medium; color: honeydew;">{{mildroad}}</h1>
+
+            </mat-card>
+        </div>
+
+        <div fxFlex="25%">
+            <mat-card style="background-color: #16ee70c9 ;color: whitesmoke;">
+
+                <p>Free</p>
+                <h1 style="font-size: medium; color: honeydew;">{{freeroad}}</h1>
+
+            </mat-card>
+        </div>
+
+
+
+    </div>
+
+    <app-d-graph></app-d-graph>
+    <mat-divider></mat-divider>
+
+
+    <!----for stats of road in islamabad-->
+
+    <div >
+        <div style="padding:12px; padding-left: 12px; font-size: medium;">
+            Road Speed Wise Stats
+
+        </div>
+
+
+
+        <div style="margin: 10px; padding: 0px; background-color: rgb(255, 254, 254);">
+            <!-- <div style="color: rgb(10, 10, 10); padding: 5px ; " fxLayout="row" fxLayoutAlign="start"> 
+               Road Wise Stats</div> -->
+            <div style="text-align: center; padding: 0px; " class="container"  fxLayout="column" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
+                <div fxFlex="40" style=" padding: 0px;" fxLayout="row" fxLayout.xs="column">
+                    <div fxFlex="33" style="color: rgb(255, 255, 255); padding: 5px ; background-color:#2196f3; border-radius: 5px; ">{{roadname}}</div>
+                    <div fxFlex="33" style="color:  rgb(255, 255, 255); padding: 5px; background-color: #2196f3; border-radius: 5px; ">{{segroadlane}}</div>
+                    <div fxFlex="33" style="color: rgb(255, 255, 255); padding: 5px; background-color: #2196f3; border-radius: 5px;">{{segroadtype}}</div>
+                </div>
+
+
+
+                <div style="padding: 0px;" fxFlex="60" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
+
+
+                    <span fxFlex="20"><p style="color: #1e88e5;">Mean Speed</p>
+                     <h6 style="color: #00000080;">{{rmean}}</h6></span>
+                    <span fxFlex="20"><p style="color: #1e88e5;">Min Speed</p>
+                     <h6 style="color: #00000080;">{{rmin}}</h6></span>
+                    <span fxFlex="20"><p style="color: #1e88e5;">Max Speed</p>
+                     <h6 style="color: #00000080;">{{rmax}}</h6></span>
+                </div>
+
+
+
+            </div>
+
+
+            <mat-divider></mat-divider>
+
+            <div style="padding: 10px; background-color: rgb(255, 254, 254);" class="container " fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center">
+
+                <div fxFlex="49">
+                    <app-alert></app-alert>
+                    <div style="position: relative;">
+                        <canvas id="minmaxmean"> </canvas>
+                    </div>
+                </div>
+                <mat-divider [vertical]="true" style="padding: 5px;"></mat-divider>
+                <div fxFlex="49">
+
+                    <div style=" position: relative; align-content:  center; margin: auto; background-color: rgb(255, 255, 255);">
+                        <canvas id="piechart"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--for  hourly graphs-->
+
+
+        <div style="padding: 10px; margin: 10px;  background-color: rgb(255, 254, 254); margin-top: 10px; margin-bottom: 40px;">
+            <p>Hourly Wise Stats</p>
+            <mat-divider></mat-divider>
+
+
+
+            <div style="padding: 5px; padding-bottom: 20px; background-color: rgb(255, 254, 254);" class="container " fxLayout="row" fxLayout.xs="column" fxLayoutFill fxLayoutGap="2%" fxLayoutAlign="center">
+
+
+
+                <div fxFlex="49">
+                    <div style=" position: relative; ">
+                        <p style=" text-align: center;">Hourly Graph</p>
+
+                        <canvas id="hourlychart"></canvas>
+
+                    </div>
+
+                </div>
+                <mat-divider [vertical]="true" style="padding: 5px;"></mat-divider>
+
+                <div fxFlex="49">
+                    <app-alert></app-alert>
+
+                    <div style="position: relative;">
+                        <p style=" text-align: center;">Interesting Hour Graph</p>
+
+                        <canvas id="barchart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

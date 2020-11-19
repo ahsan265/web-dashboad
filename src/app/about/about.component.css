@@ -1,0 +1,19 @@
+.headingabout
+{
+    justify-content: center;
+    font-size: 24px;
+    color: #ffffff;
+}
+.mainaboutmodel
+{
+    align-content: center;
+    height: 400px;
+    width: 225px;
+}
+.closebtn
+{
+ color: #ff3d00;
+ float: right;
+ align-items: flex-end;
+
+}

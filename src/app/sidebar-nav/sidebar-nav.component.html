@@ -1,0 +1,102 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button type="button" mat-icon-button (click)="opened=!opened">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+        <span>Traficity</span>
+        <span class="example-spacer"></span>
+
+
+        <!-- <a class="example-icon" routerLink="/profile">Profile</a> -->
+
+        <button fxLayout="row" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+        <mat-menu #menu="matMenu" yPosition="below">
+            <a class="example-icon" routerLink="/profile"><button  mat-menu-item>
+        <mat-icon>account_box</mat-icon>
+        <span>Profile</span>
+      </button></a>
+
+            <a class="example-icon" routerLink="/studio"> <button mat-menu-item> 
+        <mat-icon>analytics</mat-icon>
+        <span>Studio</span>
+      </button></a>
+            <a class="example-icon" (click)="loggedout()"> <button mat-menu-item> 
+        <mat-icon>lock</mat-icon>
+        <span>Logout</span>
+      </button></a>
+        </mat-menu>
+
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Add Content Here -->
+<ngx-spinner color="#e53935"></ngx-spinner>
+
+<mat-sidenav-container class="sidenav-container" color="primary">
+
+    <mat-sidenav #sidenav class="sidenav" fixedInViewport="false" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'opened' : 'side'" [opened]="opened">
+
+        <!-- <mat-nav-list >
+    
+    
+    </mat-nav-list> -->
+        <!-- from -->
+
+        <mat-nav-list>
+            <form [formGroup]="form" (ngSubmit)="onsubmit()">
+                <mat-list class="matlist">
+
+                    <img style="width: 80px;height: 80px;" src="./assets/logo/logoo.png" alt="Photo traficity"></mat-list>
+                <mat-list>
+                    <app-alert></app-alert>
+
+                </mat-list>
+            
+                    <mat-list class="matlist">
+                        <div  matInput id="geocoder" class="geocoder1"></div>
+                    </mat-list>
+                <mat-list class="matlist">
+                    <div  matInput id="geocoder1" class="geocoder2"></div>
+                </mat-list>
+                <mat-list class="matlist">
+                    <mat-divider></mat-divider>
+                </mat-list>
+                <mat-list class="matlist">
+
+                    <mat-form-field class="mat-form-field-infix" appearance="outline">
+                        <mat-label>Choose a date</mat-label>
+                        <input formControlName="date" id="date" matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker class="datepicker" #picker></mat-datepicker>
+                    </mat-form-field>
+                </mat-list>
+                <mat-list class="matlist">
+                    <mat-form-field class="mat-form-field-infix" appearance="outline">
+                        <mat-label>Choose a time</mat-label>
+                        <input formControlName="time" id="time" matInput [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Select Time">
+                        <owl-date-time [pickerType]="'timer'" [hour12Timer]="true" #dt1></owl-date-time>
+                    </mat-form-field>
+                </mat-list>
+
+                <!-- dashboard buttons -->
+                <mat-list class="matlist my-datepicker">
+                    <button mat-raised-button type="button" (click)="resetform()" class="submitbtn">Reset</button>
+                    <button mat-raised-button color="primary" id="zoomto" type="submit" class="submitbtn" [disabled]="!form.valid">Get Prediction</button>
+                </mat-list>
+            </form>
+        </mat-nav-list>
+
+
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <ng-content>
+        </ng-content>
+
+        <app-traficitymap></app-traficitymap>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

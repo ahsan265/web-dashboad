@@ -1,0 +1,55 @@
+
+<mat-toolbar class="headingbar"><div class="heading"><p>Profile</p></div></mat-toolbar>
+<div class="profilecard">
+    <mat-list class="profilecard" role="list">
+        <mat-list-item  role="listitem"> <mat-icon aria-hidden="false" aria-label="account_box">account_circle</mat-icon>Name :<p class="profilecontent">{{name}}</p></mat-list-item>
+        <mat-list-item role="listitem"> <mat-icon aria-hidden="false" aria-label="Example home icon">email</mat-icon>Email :<p class="profilecontent">{{email}}</p></mat-list-item>
+        <mat-list-item role="listitem"> <mat-icon aria-hidden="false" aria-label="Example home icon">date_range</mat-icon>Dob :<p class="profilecontent">{{dob}}</p></mat-list-item>
+        <mat-list-item role="listitem"> <mat-icon aria-hidden="false" aria-label="Example home icon">apartment</mat-icon>City :<p class="profilecontent">{{city}}</p></mat-list-item>
+        <mat-list-item role="listitem"> <mat-icon aria-hidden="false" aria-label="Example home icon">date_range</mat-icon>Gender :<p class="profilecontent">{{gender}}</p></mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item role="listitem"> <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>Change Passwords </mat-list-item>
+      </mat-list> 
+      
+      <app-alert></app-alert>
+
+      <form class="profilecard" [formGroup]="passresetform" (ngSubmit)="changepassword()"> <mat-list>
+          
+            <mat-form-field class="full-width" >
+                <mat-label>Old Password</mat-label>
+                <input  formControlName="oldpassword"  matInput [type]="hide ? 'password' : 'text'"  [ngClass]="{ 'is-invalid': submitted && f.oldpassword.errors }">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+                  </mat-form-field>
+                  <div *ngIf="submitted && f.oldpassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.oldpassword.errors.required">Email is required</div>
+                </div></mat-list>
+                  <mat-list>
+                  <mat-form-field class="full-width" >
+            <mat-label>New password</mat-label>
+            <input  formControlName="newpassword" matInput [type]="hide ? 'password' : 'text'"  [ngClass]="{ 'is-invalid': submitted && f.newpassword.errors }">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+                </mat-form-field>
+            <div *ngIf="submitted && f.newpassword.errors" class="invalid-feedback">
+              <div *ngIf="f.newpassword.errors.required">Email is required</div>
+          </div>
+            </mat-list>
+      </form>
+        <mat-card-actions>
+            <button mat-raised-button (click)="changepassword()" type="submit" class="btncolor">change Password</button>
+          </mat-card-actions>
+          
+          <mat-list class="profilecard" role="list">
+            <mat-divider></mat-divider>
+
+            <mat-list-item role="listitem"> <mat-icon aria-hidden="false" aria-label="Example home icon">lock</mat-icon>Signout</mat-list-item>
+    
+          </mat-list> 
+          <mat-card-actions>
+            <button mat-raised-button (click)="logout()" color="warn">Signout</button>
+          </mat-card-actions>
+</div>

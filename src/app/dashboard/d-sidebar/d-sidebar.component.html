@@ -1,0 +1,183 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+
+        <button type="button" mat-icon-button (click)="opened=!opened">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+        <span>Traficity Studio</span>
+        <span class="example-spacer"></span>
+
+        <button fxLayout="row" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+        <mat-menu #menu="matMenu">
+            <a class="example-icon" routerLink="/profile"><button  mat-menu-item>
+        <mat-icon>account_box</mat-icon>
+        <span>Profile</span>
+      </button></a>
+
+            <a class="example-icon" routerLink="/main"> <button mat-menu-item> 
+        <mat-icon>map</mat-icon>
+        <span>Map</span>
+      </button></a>
+            <a class="example-icon" (click)="logout()"> <button mat-menu-item> 
+        <mat-icon>lock</mat-icon>
+        <span>Sign out</span>
+      </button></a>
+        </mat-menu>
+    </mat-toolbar-row>
+
+</mat-toolbar>
+
+<!-- Add Content Here -->
+
+<mat-sidenav-container class="sidenav-container" color="primary" autosize >
+
+    <mat-sidenav fxLayout="column" #sidenav class="sidenav" fixedInViewport="false" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'opened' : 'slide'" [opened]="opened">
+        <mat-list style="align-items: center;" role="list">
+
+            <img style="width: 100px;height: 100px;" src="./assets/logo/logoo.png" alt="Photo traficity"></mat-list>
+            <app-alert></app-alert>
+
+        <form [formGroup]="form" class="example-form" (ngSubmit)="onsubmit()">
+
+            <mat-list >
+
+                <mat-list-item role="listitem">
+                    <h3 style="color: rgb(255, 40, 40); font-family: Arial, Helvetica, sans-serif">Select Date Range</h3>
+                </mat-list-item>
+                <mat-list-item role="listitem">
+                    <mat-form-field class="matlist" appearance="standard">
+                        <mat-label>From</mat-label>
+                        <input class="datepicker" id="fromdate" formControlName="fromdate" matInput matInput [min]="minDate" [max]="maxDate" [matDatepicker]="myDatepicker" [formControl]="sdate">
+                        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #myDatepicker [startAt]="minDate"></mat-datepicker>
+                    </mat-form-field>
+                </mat-list-item>
+                <!-- to -->
+                <mat-list-item role="listitem">
+                    <mat-form-field class="matlist" appearance="standard">
+                        <mat-label>To</mat-label>
+                        <input class="datepicker" id="todate" formControlName="todate" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="myDatepicker1" [formControl]="edate">
+                        <mat-datepicker-toggle matSuffix [for]="myDatepicker1"></mat-datepicker-toggle>
+                        <mat-datepicker #myDatepicker1></mat-datepicker>
+                    </mat-form-field>
+                </mat-list-item>
+
+
+
+                <mat-list-item role="listitem">
+                    <h4 style="color: rgb(255, 40, 40);  font-family: Arial, Helvetica, sans-serif;">Map Filter</h4>
+                </mat-list-item>
+
+                <mat-list-item role="listitem">
+                    <p style="color: rgba(255, 40, 40, 0.678);  font-family: Arial, Helvetica, sans-serif;">Select Road</p>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-form-field class="matlist" style="width: 100%;">
+                        <input class="datepicker" type="text" placeholder="Enter Road Name" aria-label="Number" matInput [(ngModel)]="value" [formControl]="myControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="itemSelected($event)">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <button type="button" mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="resetgeojson()">
+                    <mat-icon>close</mat-icon>
+                    </button>
+                    </mat-form-field>
+                </mat-list-item>
+                <mat-expansion-panel>
+                    <button type="button" mat-raised-button color="primary" (click)="clearroadtype()">Clear Filter</button>
+
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h4 style="color: rgba(255, 40, 40, 0.678); font-family: Arial, Helvetica, sans-serif;" id="example-radio-group-label">Select Road Type </h4>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-radio-group
+                    (change)="onroadtypechange($event)"
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group">
+                <mat-radio-button style="color: rgba(255, 40, 40, 0.678); font-family: Arial, Helvetica, sans-serif; padding: 4px;" *ngFor="let road of roadtype" [value]="road">
+                    {{road}}
+                </mat-radio-button>
+                </mat-radio-group>
+                </mat-expansion-panel>
+                <mat-divider></mat-divider>
+
+                <mat-expansion-panel>
+                    <button type="button" mat-raised-button color="primary" (click)="resetdaynnight()">Clear Filter</button>
+
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h4 style="color: rgba(255, 40, 40, 0.678); font-family: Arial, Helvetica, sans-serif;" id="example-radio-group-label">Select Full Day/AM/PM </h4>
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <mat-selection-list #dnts (selectionChange)="ondaynightchange($event)" [multiple]="false">
+                        <mat-list-option style="color: rgba(255, 40, 40, 0.678); font-family: Arial, Helvetica, sans-serif;" *ngFor="let dnt of daynight" [value]="dnt">
+                            {{dnt.time}}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </mat-expansion-panel>
+                <mat-divider></mat-divider>
+
+
+
+
+                <mat-list-item role="listitem">
+                    <h4 style="color: rgba(255, 40, 40, 0.678); font-family: Arial, Helvetica, sans-serif">Graph Filter</h4>
+                </mat-list-item>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h4 style="color: rgba(255, 40, 40, 0.678); font-family: Arial, Helvetica, sans-serif">Select Days of week</h4>
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <mat-selection-list #days (selectionChange)="ondaychange(days.selectedOptions.selected)">
+                        <button type="button" mat-raised-button color="primary" (click)="resetfilters()">Clear Filter</button>
+
+                        <mat-list-option style="color: rgba(255, 40, 40, 0.678); font-family: Arial, Helvetica, sans-serif;" *ngFor="let day of dayofweek" [value]="day">
+                            {{day}}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </mat-expansion-panel>
+                <mat-divider></mat-divider>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h4 style="color: rgba(255, 40, 40, 0.678); font-family: Verdana" id="example-radio-group-label">Select Peak hours </h4>
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                    <mat-selection-list #rushrs (selectionChange)="onrushhourschange(rushrs.selectedOptions.selected)">
+                        <button type="button" mat-raised-button color="primary" (click)="resethrsfilter()">Clear Filter</button>
+
+                        <mat-list-option style="color: rgba(255, 40, 40, 0.678); font-family: Arial, Helvetica, sans-serif;" *ngFor="let hour of rushhours" [value]="hour">
+                            {{hour}}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </mat-expansion-panel>
+
+
+            </mat-list>
+            <mat-list>
+                <div fxLayout="row" fxLayoutAlign="center">
+                    <button class="btn-control" mat-raised-button type="button" (click)="resetform()">Reset</button>
+                    <button class="btn-control" mat-raised-button color="primary" type="submit">Apply</button>
+                </div>
+            </mat-list>
+        </form>
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+        <ng-content>
+        </ng-content>
+
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

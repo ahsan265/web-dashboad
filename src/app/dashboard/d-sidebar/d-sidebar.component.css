@@ -1,0 +1,119 @@
+.sidenav-container {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+  
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .menu-spacer {
+    flex: 1 1 auto;
+  }
+  .sidenav {
+    width: 310px;
+    background-image: linear-gradient(#fffefe,#eeeeee,#eeeeee);
+  }
+  
+  .mat-toolbar.mat-primary {
+    background: #ff3d00;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .datepicker {
+  position: relative;
+  display: block;
+  width: auto;
+  z-index: 1;
+  color: 673ab7;
+  top: 10px;
+   
+  }
+  
+  .mapboxgl-ctrl-geocoder {
+      min-width: 100%;
+      z-index: 1;
+      text-align: justify;
+    }
+  .mat-list-item
+  {
+    color: #1f1d1d;
+  }
+  .bottomcontent
+  {
+    position: absolute;
+    margin-bottom: 60px;
+    margin-top: 35px;
+    bottom:  0;
+    left: 0;
+    width: max-content;
+  }
+  .matlist
+{
+  position: relative;
+  width: 100%;
+  padding: 5px;
+ 
+  display: table-row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+  
+  .example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  .timerangecolor
+  {
+    color: white;
+    width: 180px;
+  
+  }
+  .dashboardbtn
+  {
+    margin: 5px;
+  }
+  .datepickerwidget
+  {
+    padding-left: 10px;
+    color: rgb(68, 68, 68);
+  }
+  .btn-control {
+    font: bold 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: rgb(223, 217, 217);
+    position: relative;
+    bottom: 0;
+    margin: 4px;
+    z-index: 1;
+    border: none;
+    display: block;
+    cursor: pointer;
+    padding: 10px ;
+    border-radius: 3px;
+  }
+  .btn-control:hover {
+    background-color: #4ea0da;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    margin: 2px;
+    width: 100%;
+   overflow: hidden;;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }

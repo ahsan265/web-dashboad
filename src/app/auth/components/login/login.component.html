@@ -1,0 +1,51 @@
+<div fxLayoutAlign="center center" fxFlexFill class="my-card">
+      <div class="heading">  
+         <span>Sign In</span></div>
+      <div ><span class="subheading"><h4>Sign Up and get your route with predicted traffic </h4></span></div>
+ 
+      
+  
+      <div  class="centerlogo">
+         <img class="sizeoflogo" src="./assets/logo/logoo.png"/>
+
+       </div>
+    
+      <div fxFlex="25" class="loginform">
+  
+         <app-alert  class="alert"></app-alert>
+       <form fxLayout="column" fxLayoutAlign="stretch" [formGroup]="loginForm" (ngSubmit)="login()"class="my-form">
+          <mat-form-field  class="full-width"  appearance="outline">
+             <mat-label>Email</mat-label>
+             <input formControlName="email"  matInput  placeholder="Email" name="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            
+            </mat-form-field>
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div class="alert" *ngIf="f.password.errors.required">Email is required</div>
+        </div>
+          <mat-form-field  class="full-width" appearance="outline" >
+            <mat-label>Password</mat-label>
+            <input  formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+               </button>
+               </mat-form-field>
+               <div class="invalid-feedback" *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div class="alert" *ngIf="f.password.errors.required">Password is required</div>
+                  </div>
+                  </form>
+          
+           
+          <div fxFlex="30%">
+            <button class="actionbtn" mat-raised-button (click)="login()" type="submit"color="primary">LOGIN</button>
+            <button class="actionbtn" mat-stroked-button color="warn" (click)="register()" >REGISTER</button>
+
+          </div>
+     
+            
+              
+   
+               <a  routerLink="/resetpassword" class="forgotpass">Forgot  password</a>
+            
+            </div>
+</div>

@@ -1,0 +1,117 @@
+.sidenav-container {
+  height: 100%;
+  width: 100%;
+}
+
+.sidenav {
+  width: 300px;
+  background: rgb(240, 237, 236);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mat-toolbar.mat-primary {
+  background: #ff3d00;
+  top: 0;
+  z-index: 1;
+}
+
+.headingcolor
+{
+  color: #ff3d00;
+  font-size: 18px;
+  font-family: sans-serif,monospace,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: normal;
+  letter-spacing: -0.8;
+  font-style: initial;
+  width: 180px;
+}
+.dashboardbtn
+{
+  margin: 5px;
+}
+.matlist
+{
+  position: relative;
+  width: auto;
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+ 
+  justify-content: center;
+}
+
+.geocoder1 {
+
+  position: relative;
+  display: block;
+  z-index: 11;
+  color: #673ab7;
+  }
+  .geocoder2 {
+  
+    position: relative;
+    display: block;
+    z-index: 10;
+    color: #673ab7;
+    }
+  .mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+    border-color: #4a148caf;
+  }
+  .input
+  {    
+    border-color: orange;
+    border-radius: 5px;
+    padding: 10px;
+    background-origin: padding-box;
+
+  }
+  .submitbtn
+{
+  margin: 10px;
+}  
+.mat-form-field {
+  margin-right: 12px;
+}
+.timepick
+{
+  position: relative;
+  width: 100%;
+  padding: 5px;
+  margin: 15px;
+}
+.logo
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.my-datepicker .form-control {
+align-content: center;
+
+}
+.mat-form-field-infix { 
+  justify-content: center;
+  margin: auto;
+  margin-bottom: -4em;
+  margin-top: 0.1rem;
+  
+}
+
+
+
+.my-datepicker
+{
+  margin-top: 1.5em;
+} 
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+play:inline
+
+::ng-deep .mat-menu-panel {width: 100%!important; padding: 0 10px!important;} 

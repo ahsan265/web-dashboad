@@ -1,0 +1,30 @@
+.headingabout
+{
+    background-color: #ff3d00;
+    text-align: center;
+    justify-content: right;
+    font-size: 24px;
+    color: #ffffff;
+    
+}
+
+.closebtn
+{
+ color: #ff3d00;
+ justify-content: flex-end;
+ background-color: rgb(154, 157, 160);
+}
+.avgtraveltime
+{
+  font: x-small 10px/15px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: gray;
+  font-family: monospace;
+  font-style: normal;
+  font-size: 12px;
+}
+
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+  color: #ff3d00;
+}

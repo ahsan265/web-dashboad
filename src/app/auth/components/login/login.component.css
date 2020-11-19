@@ -1,0 +1,101 @@
+.my-form{
+  min-width: 50%;
+  max-width: 100%;
+}
+.my-card{
+  display: block;
+  justify-content: center;
+
+}
+.full-width {
+  display: block;
+  width: 30%;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+.heading
+{
+  text-align: center;
+  font-size: 30px;
+  font-weight: initial;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-content: center;
+  color: rgb(20, 20, 20);
+}
+.sizeoflogo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  width: 100px;
+  height: 100px;
+}
+.subheading{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: unset;
+  color: #13121298;
+  font-size: 12px;
+  text-align: center;
+}
+.headercardcolor
+{
+background-color: rgba(255, 84, 22, 0.959);
+}
+.hintclr{
+  color: rgba(255, 81, 0, 0.596);
+}
+.centerlogo
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+
+ 
+}
+.alert
+{
+  color: orangered;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+.forgotpass
+{
+  margin: -0.25rem;
+  padding: 20px;
+  color: red;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+.actionbtn
+{
+  margin: 6px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+.loagimamge
+{  width: 100%;
+  margin: auto;
+}
+
+.actionbtn_group
+{
+  align-items: center;
+}
+.loginform
+{ 
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}

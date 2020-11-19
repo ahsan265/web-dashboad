@@ -1,0 +1,115 @@
+.my-form{
+
+  min-width: 70%;
+  max-width: 100%;
+  flex: 1 1 auto;
+}
+
+
+.my-card{
+  flex-shrink: 4;
+  display: block;
+  justify-content: center;
+  resize: both;
+  overflow: auto;
+}
+ 
+.full-width {
+  display: block;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.heading
+{  text-align: center;
+  font-size:30px;
+  font-weight: initial;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-content: center;
+  color: rgb(20, 20, 20);
+}
+.hintclr{
+  color: rgba(255, 81, 0, 0.596);
+}
+
+.headercardcolor
+{
+background-color: orangered;
+}
+.sizeoflogo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  
+  width: 150px;
+  height: 150px;
+}
+.subheading{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  color: #1312129d;
+  font-size: 22px;
+  text-align: center;
+}
+.alert
+{
+  margin: -1fr;
+  color: orangered;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+.registerform
+{
+  position: relative;
+  display: block;
+  margin: -4rem;
+
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+.actionbtn
+{
+  margin: 6px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+.radiobtn
+{
+  margin: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  align-items: center;
+}
+.column {
+  float: right;
+  width: 50%;
+  padding: 30px;
+  display: table-cell;
+ 
+}
+* {
+ box-sizing: border-box;
+}
+.leftpanofheading
+{ 
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 50%;
+  padding: 60px;
+
+}

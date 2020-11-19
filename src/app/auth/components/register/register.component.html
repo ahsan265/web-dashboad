@@ -1,0 +1,94 @@
+     <div class="row container">
+
+     
+          <div class="my-card column">
+                  <app-alert></app-alert>
+                    <form [formGroup]="registerform" (ngSubmit)="register()" class="my-form" >
+                      <mat-form-field class="full-width" appearance="outline">
+                              <mat-label>Name</mat-label>
+                              <input formControlName="name" matInput  placeholder="Name"  name="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"  />
+                            
+                          </mat-form-field>
+                          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div class="alert" *ngIf="f.name.errors.required">Name is required</div>
+                        </div>
+                          <mat-form-field class="full-width" appearance="outline">
+                              <mat-label>Email</mat-label>
+                              <input  formControlName="email" matInput  placeholder="Email" name="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  />
+                            </mat-form-field>
+                          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div class="alert" *ngIf="f.email.errors.required">Email is required</div>
+                        </div>
+                      
+                        
+                          <mat-form-field class="full-width" appearance="outline">
+                              <mat-label>Password</mat-label>
+                              <input  formControlName="password" matInput [type]="hide ? 'password' : 'text'" [ngClass]="{ 'is-invalid': submitted && f.passworderrors }" />
+                              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                          </mat-form-field>
+                          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div class="alert" *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                          <section class="radiobtn" >
+                            <label class="example-margin">Gender:</label>
+                            <mat-radio-group formControlName="gender"   [ngClass]="{ 'is-invalid': submitted && f.age.errors }">
+                              <mat-radio-button class="example-margin" value="Male">Male</mat-radio-button>
+                              <mat-radio-button class="example-margin" value="Female">Female</mat-radio-button>
+                            </mat-radio-group>
+                          </section>
+                          <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Date of Birth</mat-label>
+                        <input  formControlName="age" matInput [matDatepicker]="picker" placeholder="Choose a date" [ngClass]="{ 'is-invalid': submitted && f.age.errors }" />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                      <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+                        <div class="alert" *ngIf="f.age.errors.required">Date of Birth is required</div>
+                    </div>
+                <mat-form-field class="full-width" appearance="outline">
+                  <input  type="text"
+                        placeholder="Select City"
+                        aria-label="Number"
+                        matInput
+                        id="city"
+                        [formControl]="registerform.get('city')"
+                        [matAutocomplete]="auto"
+                        [ngClass]="{ 'is-invalid': submitted && f.city.errors }" >
+                  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+                <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                  <div class="alert" *ngIf="f.city.errors.required">City Name is required</div>
+                </div>
+                </form>
+              
+             
+                     
+                <div>
+                  <button class="actionbtn" mat-raised-button (click)="register()" type="submit" color="primary">REGISTER</button>
+                  <button class="actionbtn" mat-raised-button  routerLink="/login"color="warn">ALREADY REGISTER !</button>
+                </div>  </div> 
+                <div   class="column leftpanofheading">
+                  <div class="heading">  
+                    <span>Sign Up</span></div>
+                 <div><span class="subheading"><h4>Sign Up and get your route with predicted traffic </h4></span></div>
+            
+                 
+             
+                 <div class="centerlogo">
+                    <img class="sizeoflogo" src="./assets/logo/logoo.png"/>
+           
+                  </div>
+                </div>
+         
+     </div>
+           
+     
+          
+    
+

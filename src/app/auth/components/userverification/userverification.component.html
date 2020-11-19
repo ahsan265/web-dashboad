@@ -1,0 +1,34 @@
+<div class="heading">  
+    <span>Verify Your Account</span>
+</div>
+ <div class="my-card">
+ <mat-card >
+     <mat-card-content>
+      <app-alert></app-alert>
+
+        <form [formGroup]="verficationform" (ngSubmit)="verified()"  class="my-form">
+           <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input formControlName="email" matInput  placeholder="Email" name="email" value={{this.email}} [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+           </mat-form-field>
+           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+           <mat-form-field class="full-width" >
+             <mat-label>verification Token</mat-label>
+             <input formControlName="verification_token" matInput [type]="hide ? 'password' : 'text'">
+             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+           </button>
+          </mat-form-field>
+          <div *ngIf="submitted && f.verification_token.errors" class="invalid-feedback">
+            <div *ngIf="f.verification_token.errors.required">Token is required</div>
+        </div>
+        </form>
+     </mat-card-content>
+     <mat-card-actions>
+        <button mat-raised-button (click)="verify()"  color="primary">Get Verfication Code</button>
+        <button mat-raised-button (click)="verified()" type="submit" color="primary">Verify</button>
+
+     </mat-card-actions>
+  </mat-card></div>
